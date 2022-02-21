@@ -87,10 +87,10 @@ public class TestSequential {
         double[] times = new double[totalRuns];
         double[][] matrixA = Oblig2Precode.generateMatrixA(seed, size);
         double[][] matrixB = Oblig2Precode.generateMatrixB(seed, size);
-        double[][] matrixBTransposed = MatrixUtil.transpose(matrixB);
 
         for (int i = 0; i < totalRuns; i++) {
             long time = System.nanoTime();
+            double[][] matrixBTransposed = MatrixUtil.transpose(matrixB);
             double[][] result = MatrixCalculator.calculateTransitionedB(matrixA, matrixBTransposed);
             Oblig2Precode.saveResult(seed, mode, result);
             times[i] = (System.nanoTime() - time) / 1000000.0;
@@ -132,10 +132,10 @@ public class TestSequential {
         double[] times = new double[totalRuns];
         double[][] matrixA = Oblig2Precode.generateMatrixA(seed, size);
         double[][] matrixB = Oblig2Precode.generateMatrixB(seed, size);
-        double[][] matrixATransposed = MatrixUtil.transpose(matrixA);
 
         for (int i = 0; i < totalRuns; i++) {
             long time = System.nanoTime();
+            double[][] matrixATransposed = MatrixUtil.transpose(matrixA);
             double[][] result = MatrixCalculator.calculateTransitionedA(matrixATransposed, matrixB);
             Oblig2Precode.saveResult(seed, mode, result);
             times[i] = (System.nanoTime() - time) / 1000000.0;

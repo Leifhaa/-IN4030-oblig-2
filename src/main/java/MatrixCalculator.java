@@ -1,3 +1,5 @@
+import async.ThreadWorker;
+
 public class MatrixCalculator {
 
     public static double[][] calculate(double[][] a, double[][] b){
@@ -53,12 +55,46 @@ public class MatrixCalculator {
         return c;
     }
 
-
     private static double multiplyCellsTransitionedA(double[][] matrixA, double[][] matrixB, int row, int col){
         double val = 0;
         for (int i = 0; i < matrixB.length; i++){
             val += matrixA[i][row] * matrixB[i][col];
         }
         return val;
+    }
+
+    public static double[][] calculateAsync(double[][] a, double[][] b){
+        int length = a.length;
+        int width = b[0].length;
+        double[][] c = new double[length][width];
+
+
+        int numProcessors = Runtime.getRuntime().availableProcessors();
+        Thread[] t = new Thread[numProcessors];
+
+        int readFrom = 0;
+        for (int i = 0; i < numProcessors; i++){
+            int readRows = (length / numProcessors);
+            if (i <= length % numProcessors){
+                //This modulo operator returns how many threads has to include one extra element.
+                readRows++;
+            }
+            ThreadWorker tw = new ThreadWorker(readFrom, readRows, a, b, c);
+            t[i] = new Thread(tw);
+            t[i].start();
+            readFrom += readRows;
+        }
+
+        //Wait for threads to finish
+        for (int i = 0; i < numProcessors; i++) {
+            try {
+                t[i].join();
+            } catch (Exception e) {
+                System.out.println("Exception : " + e);
+            }
+        }
+
+        Oblig2Precode.saveResult(5, Oblig2Precode.Mode.PARA_NOT_TRANSPOSED, c);
+        return c;
     }
 }
