@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class TestSequential {
@@ -30,6 +29,7 @@ public class TestSequential {
         double[] times = runClassicAlgorithmSequential(size, seed, totalRuns, Oblig2Precode.Mode.SEQ_NOT_TRANSPOSED);
         printMedianTime(size, times, Oblig2Precode.Mode.SEQ_NOT_TRANSPOSED);
     }
+
 
     @Test
     void test_classicAlgorithm_sequential_1000() {
@@ -91,7 +91,7 @@ public class TestSequential {
 
         for (int i = 0; i < totalRuns; i++) {
             long time = System.nanoTime();
-            double[][] result = MatrixCalculator.calculateTransitioned(matrixA, matrixBTransposed);
+            double[][] result = MatrixCalculator.calculateTransitionedB(matrixA, matrixBTransposed);
             Oblig2Precode.saveResult(seed, mode, result);
             times[i] = (System.nanoTime() - time) / 1000000.0;
         }
@@ -106,16 +106,37 @@ public class TestSequential {
         printMedianTime(size, times, Oblig2Precode.Mode.SEQ_A_TRANSPOSED);
     }
 
+    @Test
+    void test_TransposeA_Algorithm_sequential_200() {
+        int size = 200;
+        double[] times = runClassicAlgorithm_TransposeA_Sequential(size, seed, totalRuns, Oblig2Precode.Mode.SEQ_A_TRANSPOSED);
+        printMedianTime(size, times, Oblig2Precode.Mode.SEQ_A_TRANSPOSED);
+    }
+
+    @Test
+    void test_TransposeA_Algorithm_sequential_500() {
+        int size = 500;
+        double[] times = runClassicAlgorithm_TransposeA_Sequential(size, seed, totalRuns, Oblig2Precode.Mode.SEQ_A_TRANSPOSED);
+        printMedianTime(size, times, Oblig2Precode.Mode.SEQ_A_TRANSPOSED);
+    }
+
+    //@Test
+    void test_TransposeA_Algorithm_sequential_1000() {
+        int size = 1000;
+        double[] times = runClassicAlgorithm_TransposeA_Sequential(size, seed, totalRuns, Oblig2Precode.Mode.SEQ_A_TRANSPOSED);
+        printMedianTime(size, times, Oblig2Precode.Mode.SEQ_A_TRANSPOSED);
+    }
+
 
     private double[] runClassicAlgorithm_TransposeA_Sequential(int size, int seed, int totalRuns, Oblig2Precode.Mode mode) {
         double[] times = new double[totalRuns];
         double[][] matrixA = Oblig2Precode.generateMatrixA(seed, size);
         double[][] matrixB = Oblig2Precode.generateMatrixB(seed, size);
-        double[][] matrixBTransposed = MatrixUtil.transpose(matrixB);
+        double[][] matrixATransposed = MatrixUtil.transpose(matrixA);
 
         for (int i = 0; i < totalRuns; i++) {
             long time = System.nanoTime();
-            double[][] result = MatrixCalculator.calculateTransitioned(matrixA, matrixBTransposed);
+            double[][] result = MatrixCalculator.calculateTransitionedA(matrixATransposed, matrixB);
             Oblig2Precode.saveResult(seed, mode, result);
             times[i] = (System.nanoTime() - time) / 1000000.0;
         }
