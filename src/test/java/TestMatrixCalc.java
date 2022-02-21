@@ -1,4 +1,3 @@
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +22,7 @@ public class TestMatrixCalc {
         matrixB[2][0] = 11;
         matrixB[2][1] = 12;
 
-        double[][] res = MatrixCalculator.Calculate(matrixA, matrixB);
+        double[][] res = MatrixCalculator.calculate(matrixA, matrixB);
 
         Assertions.assertEquals(res[0][0], 58);
         Assertions.assertEquals(res[0][1], 64);
