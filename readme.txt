@@ -1,1 +1,0 @@
-Se den aller siste delen av forelesning 4 angående hvordan vi gjør dette
