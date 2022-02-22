@@ -23,6 +23,9 @@ public class ThreadWorker implements Runnable {
         } else if (mode == Oblig2Precode.Mode.PARA_A_TRANSPOSED) {
             calculateTransitionedA();
         }
+        else if (mode == Oblig2Precode.Mode.PARA_B_TRANSPOSED){
+            calculateTransitionedB();
+        }
     }
 
     private void calculate() {
@@ -54,6 +57,26 @@ public class ThreadWorker implements Runnable {
         double val = 0;
         for (int i = 0; i < matrixB.length; i++) {
             val += matrixA[i][row] * matrixB[i][col];
+        }
+        return val;
+    }
+
+
+    public double[][] calculateTransitionedB() {
+        int width = b[0].length;
+        for (int row = readFrom; row < readFrom + readElements; row++) {
+            for (int col = 0; col < width; col++) {
+                c[row][col] = multiplyCellsTransitionedB(a, b, row, col);
+            }
+        }
+        return c;
+    }
+
+
+    private static double multiplyCellsTransitionedB(double[][] matrixA, double[][] matrixB, int row, int col) {
+        double val = 0;
+        for (int i = 0; i < matrixB.length; i++) {
+            val += matrixA[row][i] * matrixB[col][i];
         }
         return val;
     }

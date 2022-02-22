@@ -24,6 +24,7 @@ public class TestResults {
         TestParallel testParallel = new TestParallel();
         testParallel.test_classicAlgorithm_parallel_100();
         testParallel.test_TransposeA_parallel_100();
+        testParallel.test_TransposeB_parallel_100();
 
         File folder = new File(".");
         File[] listOfFiles = folder.listFiles();
