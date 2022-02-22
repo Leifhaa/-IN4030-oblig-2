@@ -69,7 +69,7 @@ The following table shows the speedup of the different algorithms compared to th
 The speedsup's can also be viewed from this graph
 ![alt text](docs/speedup-chart.png)
 
-From this speedup table & graph we can see that the algorithms which uses parallelism performs worse on a small matrixes and better on larger matrixes. One particular interesting speedup is the Sequential-transition-B. Even though it's a sequential algorithm, it performs quite well compared to the others. Due to this, we can see that
+From this speedup table & graph we can see that the algorithms which uses parallelism performs worse on a small matrixes and better on larger matrixes. This is likely due to the costs of making the threads. One particular interesting speedup is the Sequential-transition-B. Even though it's a sequential algorithm, it performs quite well compared to the others. Due to this, we can see that
 even though parallellism seems to increase the speed of the algorithm, having a cache-friendly approach seems to be more important for this algorithm rather than having it parallelized. Having cache-friendly and parallelize combined however does make the algorithm even faster as the matrix expands
 
 #### 5. User guide – how to run your program
