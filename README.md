@@ -91,7 +91,7 @@ It's possible to change the seed value of the algorithm by editing the property 
 Optionally, tests can be ran through IDE's such as intellij.
 
 #### 6. Conclusion – just a short summary
-In a summary, we can see that transition on a table makes us being able to read the table row-wise. The results show that reading the table row-wise instead of column-wise results in faster execution time due to more cache-hits therefore being more cache friendly. Parallelism is shown to improve the speed of larger matrices, however cache-friendliness turned out to be more performance enchanting in this exercise.
+In a summary, we can see that transition on a table makes us being able to read the table row-wise. The results show that reading the table row-wise instead of column-wise speeds up the execution time due to more cache-hits. Having such cache-friendly approach speeds up the algorithm by many factors (up to 80 as we saw in the table).  Parallelism is shown to improve the speed of larger matrices, however cache-friendliness turned out to be more performance enchanting in this exercise.
 
 
 #### 7. Additional 4030 task
