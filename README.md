@@ -138,7 +138,7 @@ And here is the speedup when testing on the new computer
 ![alt text](docs/speedup-chart-new-computer.png)
 
 
-By comparing this chart to the previous one, we can see that it's having the same characteristics as described previously. One thing to notice however is that it's in general slower at executing the algorithms due to having less CPU's and each of these also having less GHz. It's also worth noticing that there's a bigger difference in terms of speedup compared to the previous run on my computer.
+By comparing this chart to the previous one, we can see that it's having the same characteristics as described previously. One thing to notice however is that it's in general slower at executing the algorithms due to having less CPU cores and each of these also having less GHz. It's also worth noticing that there's a bigger difference in terms of speedup compared to the previous run on my computer.
 
 
 ##### Useful links for this assignment:
