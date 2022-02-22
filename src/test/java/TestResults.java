@@ -22,7 +22,8 @@ public class TestResults {
         testSequential.test_TransposeB_Algorithm_sequential_100();
 
         TestParallel testParallel = new TestParallel();
-        testParallel.test_classicAlgorithm_sequential_100();
+        testParallel.test_classicAlgorithm_parallel_100();
+        testParallel.test_TransposeA_parallel_100();
 
         File folder = new File(".");
         File[] listOfFiles = folder.listFiles();

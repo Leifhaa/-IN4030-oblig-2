@@ -79,6 +79,7 @@ public class MatrixCalculator {
             ThreadWorker tw = new ThreadWorker(readFrom, readRows, a, b, c, mode);
             t[i] = new Thread(tw);
             t[i].start();
+
             readFrom += readRows;
         }
 
@@ -90,8 +91,6 @@ public class MatrixCalculator {
                 System.out.println("Exception : " + e);
             }
         }
-
-        Oblig2Precode.saveResult(5, Oblig2Precode.Mode.PARA_NOT_TRANSPOSED, c);
         return c;
     }
 }

@@ -42,9 +42,6 @@ public class ThreadWorker implements Runnable {
     }
 
     public double[][] calculateTransitionedA() {
-        int length = a.length;
-        int width = b[0].length;
-        double[][] c = new double[length][width];
         for (int col = readFrom; col < readFrom + readElements; col++) {
             for (int row = 0; row < a.length; row++) {
                 c[row][col] = multiplyCellsTransitionedA(a, b, col, row);
@@ -53,7 +50,7 @@ public class ThreadWorker implements Runnable {
         return c;
     }
 
-    private static double multiplyCellsTransitionedA(double[][] matrixA, double[][] matrixB, int row, int col) {
+    private static double multiplyCellsTransitionedA(double[][] matrixA, double[][] matrixB, int col, int row) {
         double val = 0;
         for (int i = 0; i < matrixB.length; i++) {
             val += matrixA[i][row] * matrixB[i][col];
