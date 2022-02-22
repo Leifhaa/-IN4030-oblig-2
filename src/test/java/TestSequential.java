@@ -4,8 +4,6 @@ public class TestSequential {
     private final int seed = 5;
     private final int totalRuns = 7;
 
-
-
     @Test
     void test_classicAlgorithm_sequential_100() {
         int size = 100;
@@ -117,7 +115,7 @@ public class TestSequential {
         TestUtil.printMedianTime(size, times, Oblig2Precode.Mode.SEQ_A_TRANSPOSED);
     }
 
-    //@Test
+    @Test
     void test_TransposeA_Algorithm_sequential_1000() {
         int size = 1000;
         double[] times = runClassicAlgorithm_TransposeA_Sequential(size, seed, totalRuns, Oblig2Precode.Mode.SEQ_A_TRANSPOSED);
