@@ -49,7 +49,7 @@ import java.util.Random;
  *
  */
 
-class Oblig2Precode {
+public class Oblig2Precode {
 
     /**
      * The modes of operation your program should execute and measure.

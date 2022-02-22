@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 public class TestMatrixCalc {
 
     @Test
-    public void TestMe(){
+    public void testCalculate(){
         double[][] matrixA = new double[2][3];
         double[][] matrixB = new double[3][2];
 

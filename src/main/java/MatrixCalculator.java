@@ -1,5 +1,3 @@
-import async.ThreadWorker;
-
 public class MatrixCalculator {
 
     public static double[][] calculate(double[][] a, double[][] b){
@@ -63,11 +61,10 @@ public class MatrixCalculator {
         return val;
     }
 
-    public static double[][] calculateAsync(double[][] a, double[][] b){
+    public static double[][] calculateAsync(double[][] a, double[][] b, Oblig2Precode.Mode mode){
         int length = a.length;
         int width = b[0].length;
         double[][] c = new double[length][width];
-
 
         int numProcessors = Runtime.getRuntime().availableProcessors();
         Thread[] t = new Thread[numProcessors];
@@ -75,11 +72,11 @@ public class MatrixCalculator {
         int readFrom = 0;
         for (int i = 0; i < numProcessors; i++){
             int readRows = (length / numProcessors);
-            if (i <= length % numProcessors){
+            if (i < length % numProcessors){
                 //This modulo operator returns how many threads has to include one extra element.
                 readRows++;
             }
-            ThreadWorker tw = new ThreadWorker(readFrom, readRows, a, b, c);
+            ThreadWorker tw = new ThreadWorker(readFrom, readRows, a, b, c, mode);
             t[i] = new Thread(tw);
             t[i].start();
             readFrom += readRows;
